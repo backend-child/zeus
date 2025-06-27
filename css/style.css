@@ -46,6 +46,28 @@ body {
   align-items: center;
 }
 
+/* Discord nav link styling */
+.discord-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.discord-link:hover {
+  color: #7289da;
+}
+
+.discord-icon {
+  width: 20px;
+  height: 20px;
+  filter: brightness(1.2);
+}
+
 .nav-links a {
   color: #ffffff;
   text-decoration: none;
@@ -79,7 +101,8 @@ body {
     position: absolute;
     top: 70px;
     right: 40px;
-    width: 180px;
+    width: 20%;
+    height: 20%;
     padding: 20px;
     border-radius: 8px;
     display: none; /* Add JS for toggle if needed */

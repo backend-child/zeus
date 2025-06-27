@@ -31,6 +31,10 @@
     <nav class="nav-links" id="nav-links">
       <button id="readDocsBtn" class="zeus-btn">📘 Read Docs</button>
       <a href="#waitlist" class="cta-nav">Join Waitlist</a>
+      <a href="https://discord.gg/9ZN9m9FC" target="_blank" rel="noopener" class="discord-link">
+        <!-- <img src="assets/discord.png" alt="Discord" class="discord-icon" /> -->
+        Join Discord
+      </a>
     </nav>
 
     <!-- Modal Container -->
@@ -287,8 +291,8 @@
 <section class="zeus-pricing-section" id="pricing">
   <div class="pricing-header">
     <h4>Pricing</h4>
-    <h2>Priced for Every Stage of Growth</h2>
-    <p>Unleash the power of Zeus — choose the plan that accelerates your DevOps and fits your vision.</p>
+    <h2>Simple Pricing. Serious Power.</h2>
+    <p>Zeus gives every developer access to world-class cloud automation — starting free, upgrading for just $1.</p>
 
     <div class="toggle-container">
       <span>Monthly</span>
@@ -310,59 +314,39 @@
       </div>
       <p>Billed <span class="billing-type">monthly</span></p>
       <ul>
-        <li>✔ Connect to any cloud provider</li>
-        <li>✔ Fetch and list S3/Bucket data</li>
-        <li>✔ Run basic CI/CD pipeline checks</li>
-        <li>✔ Query cloud databases</li>
-        <li>✔ Run terminal commands in cloud environments</li>
-        <li>✔ Access Zeus CLI core toolkit</li>
-        <li>✔ Developer documentation & community access</li>
+        <li>✔ Connect to AWS, Azure, GCP, DigitalOcean</li>
+        <li>✔ Fetch & list S3 buckets, Blob data</li>
+        <li>✔ Run queries across cloud databases</li>
+        <li>✔ Basic CI/CD pipeline diagnostics</li>
+        <li>✔ Full CLI toolkit access</li>
+        <li>✔ Developer docs & community support</li>
       </ul>
-      <a href="#start" class="btn-outline">Coming soon.</a>
+      <a href="#start" class="btn-outline">Get Started Free</a>
     </div>
 
     <!-- Pro Plan -->
     <div class="pricing-card recommended">
-      <div class="badge">Recommended</div>
+      <div class="badge">Best Value</div>
       <h3>Pro Plan</h3>
       <div class="price">
-        <span class="price-value" data-monthly="25" data-annually="20">$25</span>
+        <span class="price-value" data-monthly="1" data-annually="0.83">$1</span>
         <span>/month</span>
       </div>
-      <p>Billed <span class="billing-type">monthly</span></p>
+      <p>Billed <span class="billing-type">monthly</span> — just $12/year</p>
       <ul>
         <li>✔ Everything in Free</li>
-        <li>✔ Check cloud connection & health status</li>
-        <li>✔ Spin up sandbox/test environments</li>
-        <li>✔ Cloud cost analyzer & report</li>
-        <li>✔ Smart error tracing and fix suggestions</li>
-        <li>✔ Inject prebuilt cloud connector code</li>
-        <li>✔ CLI usage analytics & logs</li>
+        <li>✔ AI-powered diagnosis & fixes</li>
+        <li>✔ Spin up test environments</li>
+        <li>✔ Auto trace deployment errors</li>
+        <li>✔ Smart cloud cost analyzer</li>
+        <li>✔ Prebuilt SDK-free connection code</li>
+        <li>✔ Full CLI analytics + smart logging</li>
       </ul>
-      <a href="#start" class="btn-primary">Coming soon.</a>
-    </div>
-
-    <!-- Enterprise Plan -->
-    <div class="pricing-card">
-      <h3>Enterprise Plan</h3>
-      <div class="price">
-        <span class="price-value" data-monthly="Contact" data-annually="Contact">Contact</span>
-        <span>sales</span>
-      </div>
-      <p>Billed <span class="billing-type">monthly</span></p>
-      <ul>
-        <li>✔ Everything in Pro</li>
-        <li>✔ Role-based access control (RBAC)</li>
-        <li>✔ Custom compliance integrations (SOC2, ISO, etc.)</li>
-        <li>✔ AI-guided infrastructure optimization</li>
-        <li>✔ On-premise & hybrid cloud support</li>
-        <li>✔ 24/7 premium SLA & dedicated success manager</li>
-        <li>✔ Custom AI workflow builders</li>
-      </ul>
-      <a href="#contact" class="btn-outline">Coming soon.</a>
+      <a href="#start" class="btn-primary">Unlock for $1</a>
     </div>
   </div>
 </section>
+
 
 
  
@@ -405,30 +389,24 @@
   });
 </script>
 
-<script>
-  document.getElementById("billingToggle").addEventListener("change", function () {
-    const isAnnual = this.checked;
-    const priceTags = document.querySelectorAll(".price-value");
-    const billingLabels = document.querySelectorAll(".billing-type");
+document.addEventListener("DOMContentLoaded", function () {
+  const toggle = document.getElementById("billingToggle");
+  const priceValues = document.querySelectorAll(".price-value");
+  const billingTypes = document.querySelectorAll(".billing-type");
 
-    priceTags.forEach(tag => {
-      const monthly = tag.dataset.monthly;
-      const annually = tag.dataset.annually;
-
-      if (monthly === "0") {
-        tag.textContent = "Free";
-      } else if (monthly === "Contact") {
-        tag.textContent = "Contact";
-      } else {
-        tag.textContent = `$${isAnnual ? annually : monthly}`;
-      }
+  toggle.addEventListener("change", function () {
+    priceValues.forEach(price => {
+      const newPrice = toggle.checked
+        ? price.dataset.annually
+        : price.dataset.monthly;
+      price.textContent = newPrice === "0" ? "Free" : `$${newPrice}`;
     });
 
-    billingLabels.forEach(label => {
-      label.textContent = isAnnual ? "annually" : "monthly";
+    billingTypes.forEach(billing => {
+      billing.textContent = toggle.checked ? "annually" : "monthly";
     });
   });
-</script>
+});
 
 
 <script>
